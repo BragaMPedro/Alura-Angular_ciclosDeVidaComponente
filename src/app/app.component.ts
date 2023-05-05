@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Item } from './interfaces/iItem';
 import { ListaDeCompraService } from './service/lista-de-compra.service';
 
@@ -7,14 +7,24 @@ import { ListaDeCompraService } from './service/lista-de-compra.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   title = 'app-lista-de-compras';
   listaDeCompra!: Item[];
+  itemEditar!: Item;
 
   constructor(private service: ListaDeCompraService) { }
   ngOnInit(): void {
     this.listaDeCompra = this.service.getListaDeCompra();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes["itemEditar"].currentValue);
+    
+  }
+
+  editarItem(item: Item){
+    this.itemEditar = item;
+    
+  }
 
 }
