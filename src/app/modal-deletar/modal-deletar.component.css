@@ -1,0 +1,76 @@
+.modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: #00000050;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.4rem;
+  z-index: 1;
+  background-color: white;
+}
+
+.modal > header,
+footer :not(section) {
+  padding: 0.2rem 0.4rem;
+}
+
+header {
+  height: auto;
+  width: 100%;
+  border-bottom: 3px solid #3ae0ae50;
+}
+
+.title {
+  text-align: left;
+}
+
+section {
+  min-height: 6rem;
+  padding: 0.4rem;
+  background-color: #00000020;
+}
+
+section > p {
+  text-align: center;
+  margin:auto;
+}
+
+footer {
+  display: flex;
+  justify-content: right;
+  border-top: 3px solid #3ae0ae50;
+}
+
+.btn-primary {
+  background: #3ae0ae;
+  border: none;
+  border-radius: 0.4rem;
+  box-shadow: 2px 2px 2px #00000050;
+  color: white;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: black;
+}
+
+.btn-primary,
+.btn-secondary {
+  margin: 0.4rem;
+  font-size: 0.7rem;
+  padding: 0.4rem;
+}
+
+.btn-primary:hover,.btn-secondary:hover {
+  transform: scale(1.12);
+  transition-duration: 0.2s;
+  margin: 0.4rem;
+}

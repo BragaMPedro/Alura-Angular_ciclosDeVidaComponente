@@ -1,0 +1,14 @@
+<div class="modal-container" >
+  <div class="modal">
+    <header>
+      <h2 class="title">Deletar item</h2>
+    </header>
+    <section>
+      <p>Tem certeza que deseja deletar {{itemDeletar.nome}} da sua lista ?</p>
+    </section>
+    <footer>
+      <button class="btn-primary" (click)="confirmarDeletarItem()">Deletar</button>
+      <button class="btn-secondary" (click)="fecharModal()">Cancelar</button>
+    </footer>
+  </div>
+</div>

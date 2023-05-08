@@ -41,6 +41,10 @@ small {
   grid-area: edit-icon;
 }
 
+.edit-icon, .delete-icon {
+  cursor: pointer;
+}
+
 .date {
   justify-self: start;
   grid-area: date;
