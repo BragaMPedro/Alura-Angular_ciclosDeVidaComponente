@@ -45,6 +45,13 @@ export class ListaDeCompraService {
     this.listaDeCompra.splice(Number(id)-1, 1, itemEditado);
   };
 
+  deletarItem(id: string | number){
+    const index = this.listaDeCompra.findIndex(item => {
+      item.id === id;
+    });
+    this.listaDeCompra.splice(index, 1);
+  };
+
   atualizaLocalStorage () {
     localStorage.setItem('items', JSON.stringify(this.listaDeCompra));
   }

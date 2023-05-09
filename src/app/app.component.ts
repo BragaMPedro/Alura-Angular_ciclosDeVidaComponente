@@ -1,6 +1,7 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Item } from './interfaces/iItem';
 import { ListaDeCompraService } from './service/lista-de-compra.service';
+import { ModalDeletarComponent } from './modal-deletar/modal-deletar.component';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +9,12 @@ import { ListaDeCompraService } from './service/lista-de-compra.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnChanges, DoCheck {
+  
   title = 'app-lista-de-compras';
   listaDeCompra!: Item[];
   itemEditar!: Item;
   itemDeletar!: Item;
-  modalDeletarAberto: boolean = false
+  @ViewChild(ModalDeletarComponent) modalRef!: ModalDeletarComponent;
 
   constructor(private service: ListaDeCompraService) { }
 
@@ -35,20 +37,13 @@ export class AppComponent implements OnInit, OnChanges, DoCheck {
   }
 
   deletarItem(){
-    const index = this.listaDeCompra.findIndex(item => {
-      item.id === this.itemDeletar.id;
-    });
-    this.listaDeCompra.splice(index, 1);
-    this.fecherModalDeletar();
+    this.service.deletarItem(this.itemDeletar.id!)
+    this.modalRef.fecharModal();
   };
 
   abrirModalDeletar(item: Item){
     this.itemDeletar = item;
-    this.modalDeletarAberto = !this.modalDeletarAberto;
-  }
-
-  fecherModalDeletar(){
-    this.modalDeletarAberto = !this.modalDeletarAberto;
+    this.modalRef.abrirModal();
   }
 
 }

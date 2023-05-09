@@ -8,11 +8,15 @@ import { Item } from '../interfaces/iItem';
 })
 export class ModalDeletarComponent {
   @Input() itemDeletar!: Item;
-  @Output() fecharModalEventEmiter = new EventEmitter();
   @Output() confirmacaoDeletarEmiter = new EventEmitter();
+  modalAberto: boolean = false;
+
+  abrirModal(){
+    this.modalAberto = true
+  }
 
   fecharModal() {
-    this.fecharModalEventEmiter.emit();
+    this.modalAberto = false;
   }
 
   confirmarDeletarItem() {

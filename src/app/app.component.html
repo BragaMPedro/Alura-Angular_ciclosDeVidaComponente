@@ -1,14 +1,14 @@
 <app-modal-deletar
-  *ngIf="modalDeletarAberto"
   [itemDeletar]="itemDeletar"
   (confirmacaoDeletarEmiter)="deletarItem()"
-  (fecharModalEventEmiter)="fecherModalDeletar()"
 ></app-modal-deletar>
 <section class="main">
   <app-input [itemEditar]="itemEditar"> </app-input>
+
   <div class="container">
     <div class="lista">
       <h4 class="title-list">Lista de Compras</h4>
+
       <div *ngIf="listaDeCompra.length !== 0; else listaVazia">
         <div *ngFor="let item of listaDeCompra">
           <app-item
@@ -19,6 +19,7 @@
         </div>
       </div>
     </div>
+    
     <ng-template #listaVazia>
       <small>Sua lista vazia</small>
     </ng-template>
